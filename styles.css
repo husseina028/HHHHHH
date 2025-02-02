@@ -1,0 +1,266 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Page Transitions */
+.page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Main Button */
+.main-button {
+    display: block;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.main-button:hover {
+    transform: scale(1.05);
+}
+
+.main-button .date {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Heart Buttons */
+.heart-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.heart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    text-align: center;
+}
+
+.heart {
+    width: 60px;
+    height: 60px;
+    fill: #ff006e;
+    transition: transform 0.3s ease;
+}
+
+.heart-btn:hover .heart {
+    transform: scale(1.2);
+}
+
+.heart-btn span {
+    display: block;
+    color: white;
+    margin-top: 1rem;
+}
+
+/* Memory Page */
+.memory-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+#special-moment {
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+}
+
+.memory-text {
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Music Player */
+.music-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+/* Updated Music Player Styles */
+.music-player {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.track-info {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress {
+    width: 0%;
+    height: 5px;
+    background: #ff006e;
+    transition: width 0.3s;
+}
+
+#audio-player {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    fill: white;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.2);
+}
+
+.playlist {
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.playlist-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+}
+
+.playlist-item:hover,
+.playlist-item.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Final Page */
+.final-message {
+    text-align: center;
+    padding: 3rem;
+}
+
+.final-message h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.love-letter {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.love-letter p {
+    margin: 1rem 0;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 0.5rem;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Countdown Timer */
+.countdown {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#timer {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-family: monospace;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .heart-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-button {
+        font-size: 1.2rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .final-message h1 {
+        font-size: 3rem;
+    }
+}

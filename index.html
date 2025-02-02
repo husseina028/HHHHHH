@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Valentine</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Increase heart icon size */
+    .heart-btn svg.heart {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Increase text size for the heart buttons */
+    .heart-btn span {
+      font-size: 24px;
+    }
+    
+    /* Increase the main button text size */
+    .main-button {
+      font-size: 24px;
+    }
+
+    /* Default styles for the progress bar */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #ddd;
+      border-radius: 4px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    .progress-bar .progress {
+      width: 0%;
+      height: 100%;
+      background-color: #ff4081;
+      border-radius: 4px;
+    }
+
+    /* Media queries for mobile optimization */
+    @media (max-width: 600px) {
+      /* Ensure the music player container takes full width and add padding */
+      .music-container {
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      /* Enlarge the progress bar on mobile */
+      .progress-bar {
+        height: 12px;
+        margin: 15px 0;
+      }
+      .progress-bar .progress {
+        height: 100%;
+        background-color: #ff4081; /* Use a vibrant color for better visibility */
+      }
+      /* Increase control button sizes for easier tapping */
+      .player-controls button {
+        width: 48px;
+        height: 48px;
+      }
+      /* Optionally, enlarge track info text */
+      .track-info .track-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Paywall Section (New) -->
+    <section id="paywall" class="page active">
+      <div class="paywall-container">
+        <h2>Please Wait...</h2>
+        <p>Your access will be granted when the timer ends:</p>
+        <div id="timer"></div>
+      </div>
+    </section>
+
+    <!-- Homepage -->
+    <section id="homepage" class="page">
+      <button class="main-button">
+        حبّـيْتِـچْ مِـنْ أَوَّلْ نَظْـرَهْ 
+        <span class="date">14/5/2024</span>
+      </button>
+      <div class="heart-buttons">
+        <button class="heart-btn" onclick="showPage('memory')">
+          <svg viewBox="0 0 24 24" class="heart">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>أَوَّلْ أُحِبُّـكْ</span>
+        </button>
+        <button class="heart-btn" onclick="showPage('music')">
+          <svg viewBox="0 0 24 24" class="heart">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>اغانينا</span>
+        </button>
+      </div>
+      <!-- The countdown timer has been removed from the homepage -->
+    </section>
+
+    <!-- Memory Page -->
+    <section id="memory" class="page">
+      <div class="memory-container">
+        <img id="special-moment" src="C2B21060-AABB-465E-9EF5-05958C3D8E85.jpg" alt="Our Special Moment" />
+        <p class="memory-text">اول مره تكليلي احبك يوم   23/1/2024   الساعه   3:08   الصبح</p>
+      </div>
+      <button class="nav-btn" onclick="showPage('homepage')">Back</button>
+    </section>
+
+    <!-- Music Player Section (Static Playlist) -->
+    <section id="music" class="page">
+      <div class="music-container">
+        <h2>Our Playlist</h2>
+        <div class="music-player">
+          <div class="track-info">
+            <div class="track-title">حبّـيْتِـچْ مِـنْ أَوَّلْ نَظْـرَهْ</div>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+
+          <audio id="audio-player" controls>
+            <!-- Replace with your music file directory path -->
+            <source src="/music/song1.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+
+          <div class="player-controls">
+            <button class="control-btn" onclick="playPrevious()">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+
+            <button class="control-btn" onclick="playNext()">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 6h2v12h-2zm-3.5 6L4 18V6z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="playlist">
+          <div class="playlist-item active" onclick="playSong('أحمد بتشان - قابلتك امتى.m4a', this)">
+            <span>أحمد بتشان - قابلتك امت</span>
+            <span>3:57</span>
+          </div>
+          <div class="playlist-item" onclick="playSong('Maryam Shehab - غصن رمان.m4a', this)">
+            <span>Maryam Shehab - غصن رمان</span>
+            <span>2:30</span>
+          </div>
+          <div class="playlist-item" onclick="playSong('Majid Almohandis Yemkin Ahibak  ماجد المهندس يمكن احبك.m4a', this)">
+            <span>Majid Almohandis Yemkin Ahibak  ماجد المهندس يمكن احبك</span>
+            <span>3:54</span>
+          </div>
+          <!-- Add more songs here, using the music file directory you'll provide -->
+        </div>
+      </div>
+      <button class="nav-btn" onclick="showPage('homepage')">Back</button>
+    </section>
+
+    <!-- Final Page -->
+    <section id="final" class="page">
+      <div class="final-message">
+        <h1>I Love You</h1>
+        <div class="love-letter">
+          <p>My dearest,</p>
+          <p>Every moment with you feels like a dream come true. You make my world brighter, my smile wider, and my heart fuller. I love you more with each passing day.</p>
+          <p>Forever yours</p>
+        </div>
+      </div>
+      <button class="nav-btn" onclick="showPage('homepage')">Back to Start</button>
+    </section>
+  </div>
+
+  <script>
+    // Global playlist array (matching your playlist items)
+    const playlist = [
+      { src: "أحمد بتشان - قابلتك امتى.m4a", title: "أحمد بتشان - قابلتك امت", duration: "3:57" },
+      { src: "Maryam Shehab - غصن رمان.m4a", title: "Maryam Shehab - غصن رمان", duration: "2:30" },
+      { src: "Majid Almohandis Yemkin Ahibak  ماجد المهندس يمكن احبك.m4a", title: "Majid Almohandis Yemkin Ahibak  ماجد المهندس يمكن احبك", duration: "3:54" }
+    ];
+    let currentSongIndex = 0;
+
+    // Set the target date for Valentine's Day midnight in Iraq (UTC+3)
+    const target = new Date('2025-02-14T00:00:00+03:00'); // February 14th, 2025, 12:00 AM Iraq time
+
+    // Function to switch between pages
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    // Check access on page load based on local storage and the timer
+    function checkAccess() {
+      if (localStorage.getItem('accessGranted')) {
+        showPage('homepage');
+      } else {
+        const now = new Date();
+        if (now < target) {
+          showPage('paywall');
+        } else {
+          // Timer finished: record that access is granted and show the homepage.
+          localStorage.setItem('accessGranted', 'true');
+          showPage('homepage');
+        }
+      }
+    }
+
+    // Countdown Timer on the Paywall
+    function updateTimer() {
+      // If access has already been granted, no need to update the timer.
+      if (localStorage.getItem('accessGranted')) return;
+
+      const now = new Date();
+      let diff = target - now;
+      if (diff < 0) {
+        diff = 0;
+      }
+      // Calculate seconds remaining
+      const seconds = Math.floor(diff / 1000);
+      document.getElementById('timer').innerHTML = `${seconds}s`;
+
+      // When the countdown finishes, set access and reload the page.
+      if (diff <= 0) {
+        localStorage.setItem('accessGranted', 'true');
+        window.location.reload();
+      }
+    }
+
+    // Initialize access and start timer updates
+    setInterval(updateTimer, 1000);
+    checkAccess();
+
+    // Music Player functionality
+    let audioPlayer = document.getElementById("audio-player");
+    let playPauseBtn = document.getElementById("playPauseBtn");
+    let playPauseIcon = document.getElementById("playPauseIcon");
+
+    function togglePlay() {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseIcon.setAttribute("d", "M8 5v14l11-7z"); // Play icon
+      } else {
+        audioPlayer.pause();
+        playPauseIcon.setAttribute("d", "M6 6h2v12H6zm3.5 6l8.5 6V6z"); // Pause icon
+      }
+    }
+
+    function playNext() {
+      currentSongIndex = (currentSongIndex + 1) % playlist.length;
+      audioPlayer.src = playlist[currentSongIndex].src;
+      audioPlayer.play();
+    }
+
+    function playPrevious() {
+      currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+      audioPlayer.src = playlist[currentSongIndex].src;
+      audioPlayer.play();
+    }
+
+    function playSong(src, element) {
+      audioPlayer.src = src;
+      audioPlayer.play();
+      document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
+      element.classList.add('active');
+    }
+  </script>
+</body>
+</html>
